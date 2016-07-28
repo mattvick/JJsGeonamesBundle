@@ -211,6 +211,7 @@ class CountryLoader
 
             $geonameid        = $data[self::COLUMN_GEONAME_ID];
             $code             = $data[self::COLUMN_ISO_CODE];
+            $isoAlpha3        = $data[self::COLUMN_ISO3_CODE];
             $name             = $data[self::COLUMN_NAME];
             $domain           = $data[self::COLUMN_TOP_LEVEL_DOMAIN];
             $postalCodeFormat = $data[self::COLUMN_POSTAL_CODE_FORMAT];
@@ -221,6 +222,7 @@ class CountryLoader
             $log->info("{code} ({name})", [
                 'geonameid'        => $geonameid,
                 'code'             => $code,
+                'isoAlpha3'        => $isoAlpha3,
                 'name'             => $name,
                 'domain'           => $domain,
                 'postalCodeFormat' => $postalCodeFormat,
@@ -228,7 +230,7 @@ class CountryLoader
                 'phonePrefix'      => $phonePrefix,
             ]);
 
-            $country = new Country($geonameid, $code, $name, $domain, $postalCodeFormat, $postalCodeRegex, $phonePrefix);
+            $country = new Country($geonameid, $code, $isoAlpha3, $name, $domain, $postalCodeFormat, $postalCodeRegex, $phonePrefix);
             $countryRepository->saveCountry($country);
         }
     }

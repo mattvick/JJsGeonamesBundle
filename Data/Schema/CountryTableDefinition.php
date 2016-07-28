@@ -42,6 +42,11 @@ class CountryTableDefinition extends TableDefinition
                     ->setNotNull(true)
                     ->setComment("ISO code (2 char)");
 
+                $table->addColumn('isoAlpha3', 'string')
+                    ->setLength(3)
+                    ->setNotNull(true)
+                    ->setComment("ISO alpha code (3 char)");
+
                 $table->addColumn('name', 'string')
                     ->setLength(50)
                     ->setNotNull(true)

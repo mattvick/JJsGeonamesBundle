@@ -54,6 +54,7 @@ class CountryRepository extends EntityRepository implements CountryRepositoryInt
     {
         $geonameid        = $source->getGeonameid();
         $code             = $source->getCode();
+        $isoAlpha3        = $source->getIsoAlpha3();
         $name             = $source->getName();
         $domain           = $source->getDomain();
         $postalCodeFormat = $source->getPostalCodeFormat();
@@ -68,6 +69,11 @@ class CountryRepository extends EntityRepository implements CountryRepositoryInt
         // Copy the country code
         if ($code !== $destination->getCode()) {
             $destination->setCode($code);
+        }
+
+        // Copy the iso aplha 3 country code
+        if ($isoAlpha3 !== $destination->getIsoAlpha3()) {
+            $destination->setIsoAlpha3($isoAlpha3);
         }
 
         // Copy the country name

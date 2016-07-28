@@ -47,6 +47,12 @@ class Country implements CountryInterface
     public $code;
 
     /**
+     * Country ISO alpha 3 code
+     * @var string
+     */
+    public $isoAlpha3;
+
+    /**
      * Name
      * 
      * @var string
@@ -80,10 +86,11 @@ class Country implements CountryInterface
      */
     public $phonePrefix;
 
-    public function __construct($geonameid, $code, $name, $domain, $postalCodeFormat, $postalCodeRegex, $phonePrefix)
+    public function __construct($geonameid, $code, $isoAlpha3, $name, $domain, $postalCodeFormat, $postalCodeRegex, $phonePrefix)
     {
         $this->geonameid        = $geonameid;
         $this->code             = $code;
+        $this->isoAlpha3        = $isoAlpha3;
         $this->name             = $name;
         $this->domain           = $domain;
         $this->postalCodeFormat = $postalCodeFormat;
@@ -99,6 +106,11 @@ class Country implements CountryInterface
     public function getCode()
     {
         return $this->code;
+    }
+
+    public function getIsoAlpha3()
+    {
+        return $this->isoAlpha3;
     }
 
     public function getName()

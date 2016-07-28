@@ -24,6 +24,13 @@ interface CountryInterface
     function getCode();
 
     /**
+     * Returns the unique 3 character ISO code of this country
+     * 
+     * @return string
+     */
+    function getIsoAlpha3();
+
+    /**
      * Returns the name by which this country is internationally recognised
      * 
      * @return string

@@ -45,6 +45,14 @@ class Country implements CountryInterface
     protected $code;
 
     /**
+     * ISO alpha code (3 character)
+     *
+     * @Column(name="iso_alpha_3", length=3, unique=true)
+     * @var string
+     */
+    protected $isoAlpha3;
+
+    /**
      * Name
      *
      * @Column(length=50, unique=true)
@@ -129,6 +137,29 @@ class Country implements CountryInterface
     public function setCode($code)
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets the unique 3 character ISO code of this country
+     * 
+     * @return string
+     */
+    public function getIsoAlpha3()
+    {
+        return $this->isoAlpha3;
+    }
+
+    /**
+     * Sets the unique 3 character ISO code of this country
+     * 
+     * @param string $isoAlpha3 Country code
+     * @return Country
+     */
+    public function setIsoAlpha3($isoAlpha3)
+    {
+        $this->isoAlpha3 = $isoAlpha3;
 
         return $this;
     }
