@@ -209,6 +209,7 @@ class CountryLoader
             // Skip all commented codes
             if (substr($data[0], 0, 1) === '#') continue;
 
+            $geonameid        = $data[self::COLUMN_GEONAME_ID];
             $code             = $data[self::COLUMN_ISO_CODE];
             $name             = $data[self::COLUMN_NAME];
             $domain           = $data[self::COLUMN_TOP_LEVEL_DOMAIN];
@@ -218,6 +219,7 @@ class CountryLoader
 
             // Log the process
             $log->info("{code} ({name})", [
+                'geonameid'        => $geonameid,
                 'code'             => $code,
                 'name'             => $name,
                 'domain'           => $domain,
@@ -226,7 +228,7 @@ class CountryLoader
                 'phonePrefix'      => $phonePrefix,
             ]);
 
-            $country = new Country($code, $name, $domain, $postalCodeFormat, $postalCodeRegex, $phonePrefix);
+            $country = new Country($geonameid, $code, $name, $domain, $postalCodeFormat, $postalCodeRegex, $phonePrefix);
             $countryRepository->saveCountry($country);
         }
     }

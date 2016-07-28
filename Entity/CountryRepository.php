@@ -52,12 +52,18 @@ class CountryRepository extends EntityRepository implements CountryRepositoryInt
      */
     public function copyCountry(CountryInterface $source, Country $destination)
     {
+        $geonameid        = $source->getGeonameid();
         $code             = $source->getCode();
         $name             = $source->getName();
         $domain           = $source->getDomain();
         $postalCodeFormat = $source->getPostalCodeFormat();
         $postalCodeRegex  = $source->getPostalCodeRegex();
         $phonePrefix      = $source->getPhonePrefix();
+
+        // Copy the country code
+        if ($geonameid !== $destination->getGeonameid()) {
+            $destination->setGeonameid($geonameid);
+        }
 
         // Copy the country code
         if ($code !== $destination->getCode()) {

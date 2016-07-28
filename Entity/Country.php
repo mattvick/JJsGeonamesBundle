@@ -31,11 +31,10 @@ class Country implements CountryInterface
      * Unique identifier which represents the country in the local database.
      *
      * @Column(type="integer")
-     * @GeneratedValue
      * @Id
      * @var int
      */
-    protected $id;
+    protected $geonameid;
 
     /**
      * ISO code (2 character)
@@ -89,13 +88,26 @@ class Country implements CountryInterface
     protected $phonePrefix;
 
     /**
-     * Returns the unique identifier of this country in the local database
+     * Returns the unique identifier (geonameid) of this country in the local database
      * 
      * @return integer
      */
-    public function getID()
+    public function getGeonameid()
     {
-        return $this->id;
+        return $this->geonameid;
+    }
+
+    /**
+     * Sets the unique identifier (geonameid) of this country
+     * 
+     * @param string $geonameid Country code
+     * @return Country
+     */
+    public function setGeonameid($geonameid)
+    {
+        $this->geonameid = $geonameid;
+
+        return $this;
     }
 
     /**

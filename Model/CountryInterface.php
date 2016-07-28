@@ -10,6 +10,13 @@ namespace JJs\Bundle\GeonamesBundle\Model;
 interface CountryInterface
 {
     /**
+     * Returns the geonameid of this country
+     * 
+     * @return string
+     */
+    function getGeonameid();
+
+    /**
      * Returns the unique 2 character ISO code of this country
      * 
      * @return string

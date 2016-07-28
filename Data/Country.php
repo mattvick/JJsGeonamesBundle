@@ -35,6 +35,12 @@ use JJs\Bundle\GeonamesBundle\Model\CountryInterface;
 class Country implements CountryInterface
 {
     /**
+     * Geonameid
+     * @var string
+     */
+    public $geonameid;
+
+    /**
      * Country code
      * @var string
      */
@@ -74,14 +80,20 @@ class Country implements CountryInterface
      */
     public $phonePrefix;
 
-    public function __construct($code, $name, $domain, $postalCodeFormat, $postalCodeRegex, $phonePrefix)
+    public function __construct($geonameid, $code, $name, $domain, $postalCodeFormat, $postalCodeRegex, $phonePrefix)
     {
+        $this->geonameid        = $geonameid;
         $this->code             = $code;
         $this->name             = $name;
         $this->domain           = $domain;
         $this->postalCodeFormat = $postalCodeFormat;
         $this->postalCodeRegex  = $postalCodeRegex;
         $this->phonePrefix      = $phonePrefix;
+    }
+
+    public function getGeonameid()
+    {
+        return $this->geonameid;
     }
 
     public function getCode()

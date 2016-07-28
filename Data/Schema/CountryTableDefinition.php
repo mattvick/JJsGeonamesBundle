@@ -31,11 +31,11 @@ class CountryTableDefinition extends TableDefinition
             // Version 0.1.0
             case version_compare($version, "0.1.0", '>='):
 
-                $table->addColumn('id', 'integer')
+                $table->addColumn('geonameid', 'integer')
+                    ->setLength(10)
                     ->setUnsigned(true)
                     ->setNotNull(true)
-                    ->setAutoIncrement(true)
-                    ->setComment('Country ID (local db)');
+                    ->setComment('Country geonameid');
 
                 $table->addColumn('code', 'string')
                     ->setLength(2)
@@ -68,7 +68,7 @@ class CountryTableDefinition extends TableDefinition
                     ->setComment("Phone number prefix");
 
                 // Primary key
-                $table->setPrimaryKey(['id'], 'PK_GeoCountry_id');
+                $table->setPrimaryKey(['geonameid'], 'PK_GeoCountry_geonameid');
 
                 // Unique Keys
                 $table->addUniqueIndex(['code'],   'UK_GeoCountry_code');

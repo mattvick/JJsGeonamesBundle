@@ -37,10 +37,11 @@ class TimezoneTableDefinition extends TableDefinition
                     ->setAutoIncrement(true)
                     ->setComment('Timezone ID (local db)');
 
-                $table->addColumn('country_id', 'integer')
+                $table->addColumn('country_geonameid', 'integer')
+                    ->setLength(10)
                     ->setUnsigned(true)
                     ->setNotNull(true)
-                    ->setComment('Country (=> '.CountryTableDefinition::NAME.'.id)');
+                    ->setComment('Country (=> '.CountryTableDefinition::NAME.'.geonameid)');
 
                 $table->addColumn('code', 'string')
                     ->setLength(50)
@@ -51,7 +52,7 @@ class TimezoneTableDefinition extends TableDefinition
                 $table->setPrimaryKey(['id'], 'PK_GeoTimezone_id');
 
                 // Foriegn keys
-                $table->addNamedForeignKeyConstraint('FK_GeoTimezone_country', CountryTableDefinition::NAME, ['country_id'], ['id']);
+                $table->addNamedForeignKeyConstraint('FK_GeoTimezone_country', CountryTableDefinition::NAME, ['country_geonameid'], ['geonameid']);
 
                 // Unique Keys
                 $table->addUniqueIndex(['code'], 'UK_GeoTimezone_code');
