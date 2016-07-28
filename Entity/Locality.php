@@ -22,31 +22,22 @@ use Doctrine\ORM\Mapping\Table;
 abstract class Locality
 {
     /**
-     * Locality Identifier
-     *
-     * @Column(type="integer")
-     * @GeneratedValue
-     * @Id
-     * @var integer
-     */
-    protected $id;
-
-    /**
      * GeoNames.org ID
      *
      * Uniquely identifies this locality for syncronization from data on
      * GeoNames.org.
      * 
-     * @Column(name="geoname_id", type="integer", nullable=true)
+     * @Column(name="geonameid", type="integer", nullable=true)
+     * @Id
      * @var integer
      */
-    protected $geonameIdentifier;
+    protected $geonameid;
 
     /**
      * Country
      *
      * @ManyToOne(targetEntity="Country")
-     * @JoinColumn(nullable=false)
+     * @JoinColumn(name="country_geonameid", referencedColumnName="geonameid", nullable=false)
      * @var Country
      */
     protected $country;
@@ -116,35 +107,25 @@ abstract class Locality
     }
 
     /**
-     * Returns the locality ID
-     * 
-     * @return integer
-     */
-    public function getID()
-    {
-        return $this->id;
-    }
-
-    /**
      * Returns the GeoNames.org identifier of this locality
      *
      * @return integer
      */
-    public function getGeonameIdentifier()
+    public function getGeonameid()
     {
-        return $this->geonameIdentifier;
+        return $this->geonameid;
     }
 
     /**
      * Sets the GeoNames.org identifier of this locality
      * 
-     * @param integer $geonameIdentifier Identifier
+     * @param integer $geonameid Identifier
      *
      * @return Locality
      */
-    public function setGeonameIdentifier($geonameIdentifier)
+    public function setGeonameid($geonameid)
     {
-        $this->geonameIdentifier = $geonameIdentifier;
+        $this->geonameid = $geonameid;
 
         return $this;
     }

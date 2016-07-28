@@ -10,7 +10,7 @@ namespace JJs\Bundle\GeonamesBundle\Model;
 interface CountryInterface
 {
     /**
-     * Returns the geonameid of this country
+     * Returns the GeoNames.org identifier of this country
      * 
      * @return string
      */

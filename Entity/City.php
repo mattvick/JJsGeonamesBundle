@@ -25,6 +25,7 @@ class City extends Locality
      * State
      *
      * @ManyToOne(targetEntity="Country")
+     * @JoinColumn(name="state_geonameid", referencedColumnName="geonameid")
      * @var State
      */
     protected $state;

@@ -35,7 +35,7 @@ class Timezone implements TimezoneInterface
      * Country
      *
      * @ManyToOne(targetEntity="Country")
-     * @JoinColumn(nullable=false)
+     * @JoinColumn(name="country_geonameid", referencedColumnName="geonameid", nullable=false)
      * @var Country
      */
     protected $country;

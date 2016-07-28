@@ -25,21 +25,16 @@ abstract class LocalityTableDefinition extends TableDefinition
             // Version 0.1.0
             case version_compare($version, "0.1.0", '>='):
 
-                $table->addColumn('id', 'integer')
+                $table->addColumn('geonameid', 'integer')
+                    ->setLength(10)
                     ->setUnsigned(true)
                     ->setNotNull(true)
-                    ->setAutoIncrement(true)
-                    ->setComment("{$locality} ID");
+                    ->setComment("GeoNames.org ID");
 
-                $table->addColumn('geoname_id', 'integer')
-                    ->setUnsigned(true)
-                    ->setNotNull(false)
-                    ->setComment('GeoNames.org ID');
-
-                $table->addColumn('country_id', 'integer')
+                $table->addColumn('country_geonameid', 'integer')
                     ->setUnsigned(true)
                     ->setNotNull(true)
-                    ->setComment('Country (=> '.CountryTableDefinition::NAME.'.id)');
+                    ->setComment('Country (=> '.CountryTableDefinition::NAME.'.geonameid)');
 
                 $table->addColumn('name_utf8', 'string')
                     ->setLength(200)
@@ -77,13 +72,13 @@ abstract class LocalityTableDefinition extends TableDefinition
                     ->setComment("Database modification date");
 
                 // Primary key
-                $table->setPrimaryKey(['id'], "PK_Geo{$locality}_id");
+                $table->setPrimaryKey(['geonameid'], "PK_Geo{$locality}_geonameid");
 
                 // Unique Keys
-                $table->addUniqueIndex(['geoname_id'],  'UK_Geo{$locality}_geoname');
+                // $table->addUniqueIndex(['geoname_id'],  'UK_Geo{$locality}_geoname');
 
                 // Foriegn keys
-                $table->addNamedForeignKeyConstraint("FK_Geo{$locality}_country", CountryTableDefinition::NAME, ['country_id'], ['id']);
+                $table->addNamedForeignKeyConstraint("FK_Geo{$locality}_country", CountryTableDefinition::NAME, ['country_geonameid'], ['geonameid']);
                 $table->addNamedForeignKeyConstraint("FK_Geo{$locality}_timezone", TimezoneTableDefinition::NAME, ['timezone_id'], ['id']);
         }
     }

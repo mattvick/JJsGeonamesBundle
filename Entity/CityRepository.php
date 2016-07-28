@@ -50,11 +50,11 @@ class CityRepository extends LocalityRepository
 
         // Load cities using their geoname id for locality interfaces
         if ($city instanceof LocalityInterface) {
-            return $this->findOneBy(['geonameIdentifier' => $city->getGeonameIdentifier()]);
+            return $this->findOneBy(['geonameid' => $city->getGeonameid()]);
         }
 
         // Load the city as if it was the primary key
-        return $this->findOneBy(['id' => $city->getID()]);
+        // return $this->findOneBy(['id' => $city->getID()]);
     }
 
     /**

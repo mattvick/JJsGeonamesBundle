@@ -101,7 +101,7 @@ abstract class LocalityRepository extends EntityRepository implements LocalityRe
 
         if ($locality instanceof $entityClass) return $locality;
 
-        return $this->findOneBy(['geonameIdentifier' => $locality->getGeonameIdentifier()]);
+        return $this->findOneBy(['geonameid' => $locality->getGeonameid()]);
     }
 
     /**
@@ -116,8 +116,8 @@ abstract class LocalityRepository extends EntityRepository implements LocalityRe
         $timezoneRepository = $this->getTimezoneRepository();
 
         // Copy the geoname identifier
-        if ($geonameIdentifier = $source->getGeonameIdentifier()) {
-            $destination->setGeonameIdentifier($geonameIdentifier);
+        if ($geonameid = $source->getGeonameid()) {
+            $destination->setGeonameid($geonameid);
         }
 
         // Copy the country

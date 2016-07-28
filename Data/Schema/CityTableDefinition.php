@@ -33,13 +33,13 @@ class CityTableDefinition extends LocalityTableDefinition
             // Version 0.1.0
             case version_compare($version, "0.1.0", '>='):
 
-                $table->addColumn('state_id', 'integer')
+                $table->addColumn('state_geonameid', 'integer')
                     ->setUnsigned(true)
                     ->setNotNull(false)
-                    ->setComment('State (=> '.StateTableDefinition::NAME.'.id');
+                    ->setComment('State (=> '.StateTableDefinition::NAME.'.geonameid');
 
                 // Foriegn keys
-                $table->addNamedForeignKeyConstraint('FK_GeoCity_state', CountryTableDefinition::NAME, ['state_id'], ['id']);
+                $table->addNamedForeignKeyConstraint('FK_GeoCity_state', CountryTableDefinition::NAME, ['state_geonameid'], ['geonameid']);
 
         }
     }

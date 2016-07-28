@@ -35,7 +35,7 @@ interface LocalityInterface
      *
      * @return integer
      */
-    public function getGeonameIdentifier();
+    public function getGeonameid();
 
     /**
      * Returns the country

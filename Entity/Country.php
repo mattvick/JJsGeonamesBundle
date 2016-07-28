@@ -30,7 +30,7 @@ class Country implements CountryInterface
     /**
      * Unique identifier which represents the country in the local database.
      *
-     * @Column(type="integer")
+     * @Column(name="geonameid", type="integer")
      * @Id
      * @var int
      */

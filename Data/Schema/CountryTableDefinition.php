@@ -35,7 +35,7 @@ class CountryTableDefinition extends TableDefinition
                     ->setLength(10)
                     ->setUnsigned(true)
                     ->setNotNull(true)
-                    ->setComment('Country geonameid');
+                    ->setComment('Country GeoNames.org ID');
 
                 $table->addColumn('code', 'string')
                     ->setLength(2)

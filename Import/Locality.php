@@ -268,7 +268,7 @@ class Locality implements LocalityInterface
      * 
      * @return string
      */
-    public function getGeonameIdentifier()
+    public function getGeonameid()
     {
         return $this->geonameid;
     }

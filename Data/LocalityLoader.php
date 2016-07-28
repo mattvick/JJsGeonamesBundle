@@ -364,7 +364,7 @@ class LocalityLoader
 
         // Iterarate over the localities
         while(false !== $data = fgetcsv($tsv, 0, "\t")) {
-            $geonameIdentifier = $data[self::COLUMN_GEONAMEID];
+            $geonameid         = $data[self::COLUMN_GEONAMEID];
             $nameUtf8          = $data[self::COLUMN_NAME];
             $nameAscii         = $data[self::COLUMN_ASCIINAME];
             $latitude          = $data[self::COLUMN_LATITUDE];
@@ -382,7 +382,7 @@ class LocalityLoader
 
             // Log information regarding the file being loaded
             $log->info("{name_ascii} ({feature}: {repository})", [
-                'geoname_id' => $geonameIdentifier,
+                'geonameid'  => $geonameid,
                 'name_utf8'  => $nameUtf8,
                 'name_ascii' => $nameAscii,
                 'latitude'   => $latitude,
@@ -399,7 +399,7 @@ class LocalityLoader
                 $timezone = $timezoneRepository->saveTimezone(new Timezone($country, $timezoneCode));
             }
 
-            $locality = new Locality($geonameIdentifier, $nameUtf8, $nameAscii, $latitude, $longitude, $country, $timezone);
+            $locality = new Locality($geonameid, $nameUtf8, $nameAscii, $latitude, $longitude, $country, $timezone);
         }
     }
 }

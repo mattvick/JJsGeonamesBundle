@@ -33,8 +33,8 @@ class StateTableDefinition extends LocalityTableDefinition
             // Version 0.1.0
             case version_compare($version, "0.1.0", '>='):
                 // Unique Keys
-                $table->addUniqueIndex(['country_id', 'name_utf8'],  'UK_GeoState_nameUtf8');
-                $table->addUniqueIndex(['country_id', 'name_ascii'], 'UK_GeoState_nameAscii');
+                $table->addUniqueIndex(['country_geonameid', 'name_utf8'],  'UK_GeoState_nameUtf8');
+                $table->addUniqueIndex(['country_geonameid', 'name_ascii'], 'UK_GeoState_nameAscii');
 
         }
     }
