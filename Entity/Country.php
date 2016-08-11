@@ -95,6 +95,11 @@ class Country implements CountryInterface
      */
     protected $phonePrefix;
 
+    public function __toString()
+    {
+        return $this->getGeonameid().': '.$this->getName();
+    }
+
     /**
      * Returns the unique identifier (geonameid) of this country in the local database
      * 
